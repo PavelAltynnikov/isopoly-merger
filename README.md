@@ -19,6 +19,8 @@ Python 3.7.x
 - Fork this repository, and cd into it.
 ```
 git clone https://github.com/PavelAltynnikov/Isopoly-merger.git
+git remote add upstream https://github.com/PavelAltynnikov/Isopoly-merger.git
+git fetch upstream
 ```
 - Create and activate your virtual environment.
 ```
