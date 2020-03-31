@@ -1,0 +1,9 @@
+{
+    "editor.rulers": [140],
+    "python.pythonPath": "venv\\Scripts\\python.exe",
+    "python.linting.flake8Args":
+    [
+        "--max-line-length=140",
+        "--ignore=F403, F405",
+    ],
+}
