@@ -28,11 +28,13 @@ class Picture(object):
 
     def _make_legend(self):
         area = self._get_legend_area()
+        filter_colors = [(255, 255, 255), (255, 255, 255, 255)
+                         (0, 0, 0), (0, 0, 0, 0)]
         legend = {}
         counter = 0
         for x in range(area.size[0]):
             color = area.getpixel((x, 0))
-            if color not in legend and color != (255, 255, 255) and color != (0, 0, 0):
+            if color not in legend and color not in filter_colors:
                 legend[color] = self._list_legend_nums[counter]
                 counter += 1
         return legend
