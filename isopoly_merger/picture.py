@@ -28,7 +28,7 @@ class Picture(object):
 
     def _make_legend(self):
         area = self._get_legend_area()
-        filter_colors = [(255, 255, 255), (255, 255, 255, 255)
+        filter_colors = [(255, 255, 255), (255, 255, 255, 255),
                          (0, 0, 0), (0, 0, 0, 0)]
         legend = {}
         counter = 0
