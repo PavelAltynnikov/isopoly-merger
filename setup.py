@@ -2,10 +2,11 @@ from cx_Freeze import setup, Executable
 
 executables = [Executable('main.py',
                           targetName='Isopoly merger.exe',
-                          icon='resources\Isopoly_merger.ico')]
+                          icon='resources\\Isopoly_merger.ico')]
 
 excludes = ['unittest', 'email', 'html', 'http', 'xml', 'pydoc']
-zip_include_packages = ['collections', 'encodings', 'importlib', 'isopoly_merger', 'logging']
+zip_include_packages = ['collections', 'encodings',
+                        'importlib', 'isopoly_merger', 'logging']
 include_files = [('resources/GOST_Common Italic.ttf', 'resources/GOST_Common Italic.ttf'),
                  ('resources/GOST_Common.ttf', 'resources/GOST_Common.ttf')]
 
@@ -20,9 +21,9 @@ options = {
 }
 
 setup(
-    name = "Isopoly merger",
-    version = "0.9.0",
-    description = "Слияние результатов расчётов изополей по максимальному значению",
-    executables = executables,
+    name="Isopoly merger",
+    version="0.9.0",
+    description="Слияние результатов расчётов изополей по максимальному значению",
+    executables=executables,
     options=options
 )
