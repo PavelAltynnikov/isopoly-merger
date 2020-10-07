@@ -24,7 +24,7 @@ git fetch upstream
 ```
 - Create and activate your virtual environment.
 ```
-py -3.7 -m venv venv
+py -3.7 -m venv env
 ```
 - Install requisite python packages and modules.
 ```
