@@ -1,2 +1,5 @@
-cx-Freeze==6.1
-Pillow==7.0.0
+cx-Freeze==6.8.1
+cx-Logging==3.0
+importlib-metadata==4.8.1
+Pillow==8.4.0
+zipp==3.6.0
