@@ -1,6 +1,6 @@
 import os
-from isopoly_merger.functions import *
-from isopoly_merger.merger import Merger
+from functions import *
+from merger import Merger
 
 isopoly_dir = get_pictures_dir()
 RESULT_PATH = os.path.join(isopoly_dir, 'result')
