@@ -1,3 +1,7 @@
-venv/
-__pycache__/
+.idea/
+.vscode/
 /build_windows/
+__pycache__/
+env/
+test pictures/
+venv/
