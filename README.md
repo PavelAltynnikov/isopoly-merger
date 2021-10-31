@@ -1,32 +1,29 @@
-# Isopoly-merger
-This program was created to help engineers with reinforcing concrete structures in CAD and BIM programs using only individual isopoles.
-Merging occurs at maximum values from all selected isopoles.
+# Пользователям
+Если вы армируете ЖБ конструкции в Autocad или Revit используя "подложки" в виде картинок изополей армирования,
+то данная программа может вам помочь.
+Потому что при армировании конструкции у неё может быть много различающихся изополей в зависимости от количества сочетаний нагрузок.
+И в каждом изополе максимальные значения будут располагаться в разных местах поэтому придётся отслеживать несколько "подложек".
+Было бы хорошо, если все максимальные значения располагались на одном изополе.
+Этим и занимается данная программа.
 
-## Example
+## Пример
+На картинке условно показан процесс формирования нового изополя.  
+Программа получает на вход папку с изополями в формате png, а так же csv файл с числами из легенд этих изополей.
+```
+# legends.csv
+2.png,3.92,7.85,9.58,11.6,14,16.6,19.6
+3.png,3.92,7.85,9.58,11.6,14,16.6,19.6
+...
+```
+В результате работы программы формируется изополе, которое состоит из максимальных значений остальных изополей.  
+Программа достаточно "сырая", поэтому чтобы ознакомиться с тем как она работает нужно скачать файлы по
+[ссылке на Google Drive](https://drive.google.com/open?id=17AQatiJIdHkAX-wPb2CoPG1X0YngS4WI).
+
 ![example](https://user-images.githubusercontent.com/45833327/77834336-647c8200-715d-11ea-8aba-027b09b250c9.png)
 
-## Builds to download
-The assembly contains test isopoles in folder *test pictures*. 
-[Download](https://drive.google.com/open?id=17AQatiJIdHkAX-wPb2CoPG1X0YngS4WI)
+# Разработчикам
+Приветствуется любой вклад в проект!
 
-## Contribution
-Any contribution is welcome!
-
-## Requirements
-Python 3.7.x
-
-## Developer Setup:
-- Fork this repository, and cd into it.
-```
-git clone https://github.com/PavelAltynnikov/Isopoly-merger.git
-git remote add upstream https://github.com/PavelAltynnikov/Isopoly-merger.git
-git fetch upstream
-```
-- Create and activate your virtual environment.
-```
-py -3.7 -m venv venv
-```
-- Install requisite python packages and modules.
-```
-python -m pip install -r requirements.txt
-```
+## Окружение
+Интерпретатор: Python 3.9  
+Пакеты: requirements.txt
