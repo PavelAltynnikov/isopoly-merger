@@ -2,7 +2,7 @@ import os
 import csv
 import tkinter as tk
 from tkinter import filedialog
-from isopoly_merger.picture import Picture
+from picture import Picture
 
 
 def get_pictures_dir():
