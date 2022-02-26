@@ -49,13 +49,27 @@ class MergedIsopoly:
         self._legend = legend
         self._isopolies = isopolies
 
+    @property
+    def size(self):
+        return self._image.size
+
     def fill(self):
+        self._fill_isopoly()
+        self._delete_old_legend()
+        self._legend.print_on_isopoly(self)
+
+    def show(self):
+        self._image.show()
+
+    def _delete_old_legend(self):
+        for x in range(self._image.size[0]):
+            for y in range(30):
+                self._image.putpixel((x, y), (255, 255, 255, 255))
+
+    def _fill_isopoly(self):
         for x in range(self._image.size[0]):
             for y in range(self._image.size[1]):
                 coordinates = (x, y)
                 max_area = max([isopoly.get_rebar_area(coordinates) for isopoly in self._isopolies])
                 new_color = self._legend.get_color(max_area)
                 self._image.putpixel(xy=coordinates, value=new_color)
-
-    def show(self):
-        self._image.show()

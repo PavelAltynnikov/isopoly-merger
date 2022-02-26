@@ -1,5 +1,5 @@
+from PIL import ImageDraw
 from PIL.Image import Image
-# from mimetypes import init
 
 
 class Legend:
@@ -36,6 +36,35 @@ class Legend:
 
     def get_color(self, area: float) -> tuple[int, int, int]:
         return self._number_color_map.get(area, (255, 255, 255))
+
+    def print_on_isopoly(self, isopoly):
+        legend_length = 50
+        legend_height = 20
+        base_x = isopoly.size[0] - 130
+        base_y = 100
+        for number, color in self._number_color_map.items():
+            self._print_color_rectangle(
+                isopoly._image, color,
+                legend_length, legend_height,
+                base_x, base_y
+            )
+            self._print_number(
+                isopoly._image, number,
+                legend_length,
+                base_x, base_y
+            )
+            base_y += 30
+
+    def _print_color_rectangle(self, image, color, length, height, base_x, base_y):
+        for x in range(length):
+            for y in range(height):
+                image.putpixel((base_x + x, base_y + y), color)
+
+    def _print_number(self, image, number, legend_length, base_x, base_y):
+        draw = ImageDraw.Draw(image)
+        draw.text(
+            (base_x + legend_length + 5, base_y + 3), str(number), fill=(0, 0, 0, 255)
+        )
 
     def __add__(self, other: 'Legend'):
         if isinstance(other, int):
