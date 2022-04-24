@@ -89,6 +89,9 @@ class Legend:
             return self
         return self.__add__(other)
 
+    def __str__(self):
+        return f'name: {self._isopoly_name} colors: {self._number_color_map}'
+
 
 class ColorsDoNotMatchAreasException(Exception):
     def __init__(self, isopoly_name, colors, numbers):
