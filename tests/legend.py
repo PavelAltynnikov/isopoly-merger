@@ -1,3 +1,4 @@
+from typing import Union
 from PIL import ImageDraw
 from PIL.Image import Image
 
@@ -67,9 +68,6 @@ class Legend:
         )
 
     def __add__(self, other: 'Legend'):
-        if isinstance(other, int):
-            return self
-
         merged_legend = Legend("merged_legend")
         merged_legend._color_number_map = self._color_number_map.copy()
 
@@ -85,6 +83,11 @@ class Legend:
         }
 
         return merged_legend
+
+    def __radd__(self, other: Union['Legend', int]):
+        if other == 0:
+            return self
+        return self.__add__(other)
 
 
 class ColorsDoNotMatchAreasException(Exception):

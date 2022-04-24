@@ -24,11 +24,7 @@ for isopoly in isopolies:
 for isopoly in isopolies:
     isopoly.fill_legend()
 
-# for i in isopolies:
-#     print(i._legend._color_number_map)
-
-first_isopoly = isopolies.pop()
-merged_legend = sum([isopoly._legend for isopoly in isopolies], start=first_isopoly._legend)
+merged_legend = sum([isopoly._legend for isopoly in isopolies])
 
 # print(merged_legend._color_number_map)
 
