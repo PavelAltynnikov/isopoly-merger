@@ -48,10 +48,7 @@ class MergedIsopoly:
         self._image = Image.new(mode='RGB', size=size, color=(255, 255, 255))
         self._legend = legend
         self._isopolies = isopolies
-
-    @property
-    def size(self):
-        return self._image.size
+        self._name = '{} {}'.format('MergedIsopoly', datetime.datetime.now().strftime("%Y-%m-%d_%H-%M"))
 
     def fill(self):
         self._fill_isopoly()
