@@ -54,6 +54,10 @@ class MergedIsopoly:
             datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
         )
 
+    @property
+    def size(self):
+        return self._image.size
+
     def fill(self):
         self._fill_isopoly()
         self._delete_old_legend()
