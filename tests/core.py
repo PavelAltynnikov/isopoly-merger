@@ -21,10 +21,8 @@ legends_data = get_legends(TEST_FOLDER)
 for isopoly in isopolies:
     isopoly.set_data_into_legend(legends_data)
     isopoly.fill_legend()
-    print(isopoly._legend)
 
 merged_legend = sum([isopoly._legend for isopoly in isopolies])
-print(merged_legend)
 
 merged_isopoly = MergedIsopoly(isopolies[0].size, merged_legend, isopolies)
 merged_isopoly.fill()
