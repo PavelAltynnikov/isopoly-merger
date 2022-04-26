@@ -17,12 +17,7 @@ class Legend:
         self._areas = data
 
     def parse_picture(self, picture_line: Image):
-        colors = [
-            same_colors[1]
-            for same_colors
-            in picture_line.getcolors()
-            if same_colors[1] not in Legend.uncorrect_colors
-        ]
+        colors = self._find_unique_colors(picture_line)
 
         if len(colors) != len(self._areas):
             raise ColorsDoNotMatchAreasException(self._isopoly_name, colors, self._areas)
@@ -30,7 +25,7 @@ class Legend:
         # срез берётся на тот случай если цвет с альфа каналом
         for color, number in zip(colors, self._areas):
             self._color_number_map.update({color[:3]: number})  # type: ignore
-            self._number_color_map.update({number: color[:3]})  # type: ignore
+            self._number_color_map.update({number: color[:3]})
 
     def get_rebar_area(self, color: tuple[int, int, int]) -> float:
         return self._color_number_map.get(color, -1.0)
@@ -55,6 +50,18 @@ class Legend:
                 base_x, base_y
             )
             base_y += 30
+
+    def _find_unique_colors(self, picture_line: Image) -> list[tuple[int, int, int]]:
+        colors = []
+        y = 0
+
+        for x in range(picture_line.width):
+            color = picture_line.getpixel((x, y))
+            if color in Legend.uncorrect_colors or color in colors:
+                continue
+            colors.append(color)
+
+        return colors
 
     def _print_color_rectangle(self, image, color, length, height, base_x, base_y):
         for x in range(length):
