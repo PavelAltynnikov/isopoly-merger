@@ -1,3 +1,4 @@
+import datetime
 import os
 from decimal import InvalidOperation
 from typing import Sequence
@@ -57,6 +58,9 @@ class MergedIsopoly:
 
     def show(self):
         self._image.show()
+
+    def save(self, path: str):
+        self._image.save(os.path.join(path, f"{self._name}.png"))
 
     def _delete_old_legend(self):
         for x in range(self._image.size[0]):

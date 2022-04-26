@@ -28,4 +28,5 @@ print(merged_legend)
 
 merged_isopoly = MergedIsopoly(isopolies[0].size, merged_legend, isopolies)
 merged_isopoly.fill()
+merged_isopoly.save(os.path.join(TEST_FOLDER, 'result'))
 merged_isopoly.show()
