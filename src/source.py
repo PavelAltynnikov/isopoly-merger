@@ -2,7 +2,6 @@ import os
 import csv
 import tkinter as tk
 from tkinter import filedialog
-from picture import Picture
 
 
 def get_pictures_dir():
@@ -19,19 +18,7 @@ def create_dir(path):
         os.mkdir(path)
 
 
-def _get_files_by_extensions(path, extension):
-    files = []
-    for file in os.listdir(path):
-        if file.endswith(extension):
-            files.append(file)
-    return files
-
-
-def get_pictures(path):
-    return _get_files_by_extensions(path, ('.jpg', '.png', '.bmp'))
-
-
-def get_legends(path):
+def parse_legends(path):
     legends = []
     files = _get_files_by_extensions(path, '.csv')
     if files:
@@ -40,8 +27,9 @@ def get_legends(path):
     return legends
 
 
-def create_pictures(path, pictures, legends):
-    list_obj_pictures = []
-    for picture_name in pictures:
-        list_obj_pictures.append(Picture(os.path.join(path, picture_name), legends))
-    return list_obj_pictures
+def _get_files_by_extensions(path, extension):
+    files = []
+    for file in os.listdir(path):
+        if file.endswith(extension):
+            files.append(file)
+    return files

@@ -1,22 +1,29 @@
 import os
-from functions import *
-from merger import Merger
+import PIL
+import source
+from isopoly import Isopoly, MergedIsopoly
 
-isopoly_dir = get_pictures_dir()
-RESULT_PATH = os.path.join(isopoly_dir, 'result')
-create_dir(RESULT_PATH)
+isopoly_dir = source.get_pictures_dir()
+result_path = os.path.join(isopoly_dir, "result")
+source.create_dir(result_path)
 
-pictures = get_pictures(isopoly_dir)
-legends = get_legends(isopoly_dir)
+legends_data = source.parse_legends(isopoly_dir)
 
-if not pictures:
-    print('В данной папке нет картинок для слияния.')
+isopolies = [
+    Isopoly(PIL.Image.open(os.path.join(isopoly_dir, file_name)))
+    for file_name in os.listdir(isopoly_dir)
+    if file_name.endswith("png")
+]
 
-if not legends:
-    print('В данной папке нет файла с легендами в формате "csv"')
+for isopoly in isopolies:
+    isopoly.set_data_into_legend(legends_data)
+    isopoly.fill_legend()
 
-if pictures and legends:
-    merge_picture = Merger(create_pictures(isopoly_dir, pictures, legends))
-    merge_picture.save_image(RESULT_PATH)
+merged_legend = sum([isopoly._legend for isopoly in isopolies])
 
-input('Для завершения нажмите любую клавишу')
+merged_isopoly = MergedIsopoly(isopolies[0].size, merged_legend, isopolies)
+merged_isopoly.fill()
+merged_isopoly.save(result_path)
+merged_isopoly.show()
+
+input("Программа завершила свою работу. Нажмите любую клавишу для закрытия окна.")
