@@ -5,11 +5,9 @@ from tkinter import filedialog
 
 
 def get_pictures_dir():
-    print('Выберите папку с изополями армирования')
     root = tk.Tk()
     root.withdraw()
     path = filedialog.askdirectory()
-    print(f'Вы выбрали папку {path}')
     return path
 
 
