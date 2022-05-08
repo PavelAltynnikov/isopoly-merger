@@ -7,7 +7,7 @@ from tkinter import filedialog
 def get_pictures_dir():
     root = tk.Tk()
     root.withdraw()
-    path = filedialog.askdirectory()
+    path = filedialog.askdirectory(mustexist=True)
     return path
 
 
