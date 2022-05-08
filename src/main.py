@@ -46,7 +46,7 @@ def main():
         merged_isopoly = MergedIsopoly(isopolies[0].size, merged_legend, isopolies)
         merged_isopoly.fill()
         merged_isopoly.save(result_path)
-        print(f"Изополе сформировано и сохранено. Результат находится тут: {isopoly_dir}")
+        print(f"Изополе сформировано и сохранено. Результат находится тут: {result_path}")
         merged_isopoly.show()
 
     except legend.LegendNotFoundException as e:
@@ -54,7 +54,7 @@ def main():
     except legend.ColorsDoNotMatchAreasException as e:
         print(
             f'Для изополя "{e._isopoly_name}" '
-            'не совпадают цвета в легенде и количество чисел в файле csv\n'
+            'не совпадает количество цветов в легенде и количество площадей в файле csv\n'
             f'цвета: {e._colors}\n'  # тут надо попрбовать преобразовать таплы в имена цветов
             f'числа: {e._numbers}'
         )
