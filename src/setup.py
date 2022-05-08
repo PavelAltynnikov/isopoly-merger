@@ -3,8 +3,8 @@ from cx_Freeze import setup, Executable
 executables = [
     Executable(
         r'src\main.py',
-        targetName='Isopoly merger.exe',
-        icon=r'src\resources\Isopoly_merger.ico'
+        targetName='isopoly_merger.exe',
+        icon=r'src\resources\isopoly.ico'
     )
 ]
 
@@ -15,7 +15,7 @@ zip_include_packages = ['collections', 'encodings',
 options = {
     'build_exe': {
         'include_msvcr': True,
-        'build_exe': 'build_windows',
+        'build_exe': r'build\windows\IsopolyMerger',
         'excludes': excludes,
         'zip_include_packages': zip_include_packages,
     }
