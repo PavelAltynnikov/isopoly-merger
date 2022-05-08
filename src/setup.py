@@ -1,8 +1,12 @@
 from cx_Freeze import setup, Executable
 
-executables = [Executable('main.py',
-                          targetName='Isopoly merger.exe',
-                          icon='resources\\Isopoly_merger.ico')]
+executables = [
+    Executable(
+        r'src\main.py',
+        targetName='Isopoly merger.exe',
+        icon=r'src\resources\Isopoly_merger.ico'
+    )
+]
 
 excludes = ['unittest', 'email', 'html', 'http', 'xml', 'pydoc']
 zip_include_packages = ['collections', 'encodings',
