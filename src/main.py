@@ -22,7 +22,7 @@ def main():
         print("В файле данных одна легенда. Нет смысла дальше работать")
         return
 
-    result_path = os.path.join(isopoly_dir, "result")
+    result_path = os.path.join(isopoly_dir, "merge result")
     source.create_dir(result_path)
 
     isopolies = [
