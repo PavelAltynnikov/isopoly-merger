@@ -7,8 +7,6 @@ executables = [Executable('main.py',
 excludes = ['unittest', 'email', 'html', 'http', 'xml', 'pydoc']
 zip_include_packages = ['collections', 'encodings',
                         'importlib', 'isopoly_merger', 'logging']
-include_files = [('resources/GOST_Common Italic.ttf', 'resources/GOST_Common Italic.ttf'),
-                 ('resources/GOST_Common.ttf', 'resources/GOST_Common.ttf')]
 
 options = {
     'build_exe': {
@@ -16,7 +14,6 @@ options = {
         'build_exe': 'build_windows',
         'excludes': excludes,
         'zip_include_packages': zip_include_packages,
-        'include_files': include_files,
     }
 }
 
