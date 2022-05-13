@@ -1,14 +1,12 @@
 import os
 import csv
-import tkinter as tk
-from tkinter import filedialog
+import tkinter
+import tkinter.filedialog
 
 
 def get_pictures_dir():
-    root = tk.Tk()
-    root.withdraw()
-    path = filedialog.askdirectory(mustexist=True)
-    return path
+    tkinter.Tk().withdraw()
+    return tkinter.filedialog.askdirectory(mustexist=True)
 
 
 def create_dir(path):
