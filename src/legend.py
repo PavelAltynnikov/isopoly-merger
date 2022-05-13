@@ -100,6 +100,31 @@ class Legend:
         return f'name: {self._isopoly_name} colors: {self._number_color_map}'
 
 
+class LegendsSourceFileNotFoundException(Exception):
+    """Представляет исключение возникшее из-за того,
+    что по какой-то причине не удалось найти файл-данных легенд изополей.
+    """
+    def __init__(self, directory: str):
+        super().__init__()
+        self.directory = directory
+
+
+class LegendsSourceFileIsEmptyException(Exception):
+    """Представляет исключение возникшее из-за того, что файл-данных легенд пуст."""
+    def __init__(self, file_path: str):
+        super().__init__()
+        self.file_path = file_path
+
+
+class LegendsSourceFileHasOneLegendException(Exception):
+    """Представляет исключение возникшее из-за того,
+    что в файле-данных легенд находятся данные для одной легенды.
+    """
+    def __init__(self, file_path: str):
+        super().__init__()
+        self.file_path = file_path
+
+
 class LegendDataNotFoundException(Exception):
     """Представляет исключение возникшее из-за того,
     что не удалось найти данные легенды для определённого изополя.
