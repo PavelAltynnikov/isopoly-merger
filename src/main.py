@@ -53,10 +53,10 @@ def main():
         print(f'Для изополя "{e._isopoly_name}" не найдены данные в файле csv')
     except legend.ColorsDoNotMatchAreasException as e:
         print(
-            f'Для изополя "{e._isopoly_name}" '
+            f'Для изополя "{e.isopoly_name}" '
             'не совпадает количество цветов в легенде и количество площадей в файле csv\n'
-            f'цвета: {e._colors}\n'  # тут надо попрбовать преобразовать таплы в имена цветов
-            f'числа: {e._numbers}'
+            f'цвета: {e.colors}\n'  # тут надо попробовать преобразовать таплы в имена цветов
+            f'числа: {e.numbers}'
         )
 
 

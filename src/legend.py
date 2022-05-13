@@ -101,19 +101,15 @@ class Legend:
 
 
 class ColorsDoNotMatchAreasException(Exception):
+    """Представляет исключение возникшее из-за того,
+    что количество цветов легенды изополя, не совпадает
+    с количеством площадей легенды из файла-данных.
+    """
     def __init__(self, isopoly_name, colors, numbers):
         super().__init__()
-        self._isopoly_name = isopoly_name
-        self._colors = colors
-        self._numbers = numbers
-
-    def __str__(self):
-        return (
-            f'Для изополя "{self._isopoly_name}" '
-            'не совпадают цвета в легенде и количество чисел в файле csv\n'
-            f'цвета: {self._colors}\n'
-            f'числа: {self._numbers}'
-        )
+        self.isopoly_name = isopoly_name
+        self.colors = colors
+        self.numbers = numbers
 
 
 class LegendNotFoundException(Exception):
