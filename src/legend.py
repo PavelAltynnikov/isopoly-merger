@@ -100,6 +100,15 @@ class Legend:
         return f'name: {self._isopoly_name} colors: {self._number_color_map}'
 
 
+class LegendDataNotFoundException(Exception):
+    """Представляет исключение возникшее из-за того,
+    что не удалось найти данные легенды для определённого изополя.
+    """
+    def __init__(self, isopoly_name):
+        super().__init__()
+        self.isopoly_name = isopoly_name
+
+
 class ColorsDoNotMatchAreasException(Exception):
     """Представляет исключение возникшее из-за того,
     что количество цветов легенды изополя, не совпадает
