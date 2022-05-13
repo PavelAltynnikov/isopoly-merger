@@ -41,6 +41,15 @@ def main():
         print(f"Изополе сформировано и сохранено. Результат находится тут: {result_path}")
         merged_isopoly.show()
 
+    except legend.LegendsSourceFileNotFoundException as e:
+        print(f"В папке не обнаружен файл-данных легенд изополей: {e.directory}")
+    except legend.LegendsSourceFileIsEmptyException as e:
+        print(f'Файл-данных легенд "{e.file_path}" пуст')
+    except legend.LegendsSourceFileHasOneLegendException as e:
+        print(
+            f'Файл-данных легенд "{e.file_path}" содержит данные для одной легенды. '
+            'Нет смысла дальше работать'
+        )
     except legend.LegendNotFoundException as e:
         print(f'Для изополя "{e._isopoly_name}" не найдены данные в файле csv')
     except legend.ColorsDoNotMatchAreasException as e:
