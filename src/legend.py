@@ -1,6 +1,27 @@
+import os
 from typing import Union
 from PIL import ImageDraw
 from PIL.Image import Image
+
+
+def find_legends_data_path(dir_path: str) -> str:
+    for file_path in os.listdir(dir_path):
+        if file_path.endswith('csv'):
+            return os.path.join(dir_path, file_path)
+    raise LegendsSourceFileNotFoundException(dir_path)
+
+
+def parse_legends(legends_file_path: str) -> list[list[str]]:
+    with open(legends_file_path, 'r') as file:
+        lines = file.readlines()
+        if not lines:
+            raise LegendsSourceFileIsEmptyException(legends_file_path)
+
+        legends_data = [line.strip().split(',') for line in lines]
+        if len(legends_data) == 1:
+            raise LegendsSourceFileHasOneLegendException(legends_file_path)
+
+        return legends_data
 
 
 class Legend:

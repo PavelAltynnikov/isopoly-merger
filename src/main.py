@@ -13,15 +13,7 @@ def main():
         return
     print(f"Вы выбрали папку {isopoly_dir}")
 
-    legends_data = source.parse_legends(isopoly_dir)
-    if not legends_data:
-        print("В папке не обнаружен файл данными о легендах изополей")
-        return
-
-    if len(legends_data) == 1:
-        print("В файле данных одна легенда. Нет смысла дальше работать")
-        return
-
+    legends_data = legend.parse_legends(legend.find_legends_data_path(isopoly_dir))
     result_path = os.path.join(isopoly_dir, "merge result")
     source.create_dir(result_path)
 
