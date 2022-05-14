@@ -1,6 +1,5 @@
 import datetime
 import os
-from decimal import InvalidOperation
 from typing import Sequence
 from PIL import Image
 from legend import Legend, LegendDataNotFoundException
@@ -39,8 +38,6 @@ class Isopoly:
 
     def get_rebar_area(self, coordinates: tuple[int, int]) -> float:
         color = self._image.getpixel(coordinates)  # type: tuple[int, int, int]
-        if self._legend is None:
-            raise InvalidOperation()
         return self._legend.get_rebar_area(color)
 
 
