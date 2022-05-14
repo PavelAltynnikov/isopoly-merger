@@ -167,15 +167,6 @@ class ColorsDoNotMatchAreasException(Exception):
         self.numbers = numbers
 
 
-class LegendNotFoundException(Exception):
-    def __init__(self, isopoly_name):
-        super().__init__()
-        self._isopoly_name = isopoly_name
-
-    def __str__(self):
-        return f'Для изополя "{self._isopoly_name}" не найдены данные в файле csv'
-
-
 if __name__ == '__main__':
     dct1 = {1: 10, 2: 20, 3: 33}
     dct2 = {4: 40, 2: 22, 3: 30}

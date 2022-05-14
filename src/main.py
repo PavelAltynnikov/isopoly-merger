@@ -50,8 +50,8 @@ def main():
             f'Файл-данных легенд "{e.file_path}" содержит данные для одной легенды. '
             'Нет смысла дальше работать'
         )
-    except legend.LegendNotFoundException as e:
-        print(f'Для изополя "{e._isopoly_name}" не найдены данные в файле csv')
+    except legend.LegendDataNotFoundException as e:
+        print(f'Для изополя "{e.isopoly_name}" не найдены данные в файле csv')
     except legend.ColorsDoNotMatchAreasException as e:
         print(
             f'Для изополя "{e.isopoly_name}" '

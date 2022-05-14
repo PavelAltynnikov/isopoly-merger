@@ -3,7 +3,7 @@ import os
 from decimal import InvalidOperation
 from typing import Sequence
 from PIL import Image
-from legend import Legend, LegendNotFoundException
+from legend import Legend, LegendDataNotFoundException
 
 
 class Isopoly:
@@ -27,7 +27,7 @@ class Isopoly:
             if self._name == legend_name:
                 self._legend.set_data(numbers)
                 return
-        raise LegendNotFoundException(self._name)
+        raise LegendDataNotFoundException(self._name)
 
     def fill_legend(self):
         left = 0
