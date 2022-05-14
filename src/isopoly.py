@@ -22,10 +22,10 @@ class Isopoly:
             LegendNotFoundException: [description]
         """
         for legend_data in legends_data:
-            legend_name, *numbers = legend_data
-            numbers = [float(number) for number in numbers]
-            if self._name == legend_name:
-                self._legend.set_data(numbers)
+            isopoly_name, *areas = legend_data
+            areas = [float(number) for number in areas]
+            if self._name == isopoly_name:
+                self._legend.set_data(areas)
                 return
         raise LegendDataNotFoundException(self._name)
 
