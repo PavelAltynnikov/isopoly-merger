@@ -38,7 +38,7 @@ class Isopoly:
 
     def get_rebar_area(self, coordinates: tuple[int, int]) -> float:
         color = self._image.getpixel(coordinates)  # type: tuple[int, int, int]
-        return self._legend.get_rebar_area(color)
+        return self._legend.get_rebar_area(color[:3])
 
 
 class MergedIsopoly:
