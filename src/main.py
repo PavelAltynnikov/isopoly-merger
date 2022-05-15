@@ -26,9 +26,9 @@ def main():
         if file_name.endswith("png")
     ]
 
-    if not isopolies:
-        print(f'Не удалось найти ни одного изополя. Проверьте указанную папку "{isopoly_dir}"')
-        return
+        if not isopolies:
+            print('Не удалось найти ни одного изополя')
+            return
 
     try:
 
@@ -44,8 +44,8 @@ def main():
         print(f"Изополе сформировано и сохранено. Результат находится тут: {result_path}")
         merged_isopoly.show()
 
-    except legend.LegendsSourceFileNotFoundException as e:
-        print(f"В папке не обнаружен файл-данных легенд изополей: {e.directory}")
+    except legend.LegendsSourceFileNotFoundException:
+        print("В папке не обнаружен файл-данных легенд изополей")
     except legend.LegendsSourceFileIsEmptyException as e:
         print(f'Файл-данных легенд "{e.file_path}" пуст')
     except legend.LegendsSourceFileHasOneLegendException as e:
