@@ -33,7 +33,7 @@ def main():
             isopoly.set_data_into_legend(legends_data)
             isopoly.fill_legend()
 
-        merged_legend = sum([isopoly._legend for isopoly in isopolies])
+        merged_legend = sum([isopoly.legend for isopoly in isopolies])
 
         merged_isopoly = MergedIsopoly(isopolies[0].size, merged_legend, isopolies)
         merged_isopoly.fill()

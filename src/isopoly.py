@@ -9,7 +9,7 @@ class Isopoly:
     def __init__(self, image: Image.Image):
         self._image = image
         self._name = os.path.basename(image.filename)  # type: ignore
-        self._legend = Legend(self._name)
+        self.legend = Legend(self._name)
 
     @property
     def size(self):
@@ -24,7 +24,7 @@ class Isopoly:
             isopoly_name, *areas = legend_data
             areas = [float(number) for number in areas]
             if self._name == isopoly_name:
-                self._legend.set_data(areas)
+                self.legend.set_data(areas)
                 return
         raise LegendDataNotFoundException(self._name)
 
@@ -34,17 +34,17 @@ class Isopoly:
         right = self._image.size[0]
         lower = Legend.line_on_picture + 1
         legend_line = self._image.crop((left, upper, right, lower))
-        self._legend.parse_picture(legend_line)
+        self.legend.parse_picture(legend_line)
 
     def get_rebar_area(self, coordinates: tuple[int, int]) -> float:
         color = self._image.getpixel(coordinates)  # type: tuple[int, int, int]
-        return self._legend.get_rebar_area(color[:3])
+        return self.legend.get_rebar_area(color[:3])
 
 
 class MergedIsopoly:
     def __init__(self, size: tuple[int, int], legend: Legend, isopolies: Sequence[Isopoly]):
         self._image = Image.new(mode='RGB', size=size, color=(255, 255, 255))
-        self._legend = legend
+        self.legend = legend
         self._isopolies = isopolies
         self._name = '{} {}'.format(
             'MergedIsopoly',
@@ -58,7 +58,7 @@ class MergedIsopoly:
     def fill(self):
         self._fill_isopoly()
         self._delete_old_legend()
-        self._legend.print_on_isopoly(self)
+        self.legend.print_on_isopoly(self)
 
     def show(self):
         self._image.show()
@@ -78,5 +78,5 @@ class MergedIsopoly:
                 max_area = max([isopoly.get_rebar_area(coordinates) for isopoly in self._isopolies])
                 if max_area == -1:
                     continue
-                new_color = self._legend.get_color(max_area)
+                new_color = self.legend.get_color(max_area)
                 self._image.putpixel(xy=coordinates, value=new_color)
