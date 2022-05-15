@@ -16,21 +16,21 @@ def main():
         return
     print(f"Вы выбрали папку {isopoly_dir}")
 
-    legends_data = legend.parse_legends(legend.find_legends_data_path(isopoly_dir))
-    result_path = os.path.join(isopoly_dir, "merge result")
-    source.create_dir(result_path)
+    try:
 
-    isopolies = [
-        Isopoly(PIL.Image.open(os.path.join(isopoly_dir, file_name)))
-        for file_name in os.listdir(isopoly_dir)
-        if file_name.endswith("png")
-    ]
+        legends_data = legend.parse_legends(legend.find_legends_data_path(isopoly_dir))
+        result_path = os.path.join(isopoly_dir, "merge result")
+        source.create_dir(result_path)
+
+        isopolies = [
+            Isopoly(PIL.Image.open(os.path.join(isopoly_dir, file_name)))
+            for file_name in os.listdir(isopoly_dir)
+            if file_name.endswith("png")
+        ]
 
         if not isopolies:
             print('Не удалось найти ни одного изополя')
             return
-
-    try:
 
         for isopoly in isopolies:
             isopoly.set_data_into_legend(legends_data)
