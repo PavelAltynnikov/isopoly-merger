@@ -4,8 +4,11 @@ import source
 import legend
 from isopoly import Isopoly, MergedIsopoly
 
+_version = '1.1.0'
+
 
 def main():
+    print(f'isopoly merger: {_version}')
     print("Выберите папку с изополями армирования")
     isopoly_dir = source.get_pictures_dir()
     if not isopoly_dir:
