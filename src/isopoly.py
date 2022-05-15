@@ -76,5 +76,7 @@ class MergedIsopoly:
             for y in range(self._image.size[1]):
                 coordinates = (x, y)
                 max_area = max([isopoly.get_rebar_area(coordinates) for isopoly in self._isopolies])
+                if max_area == -1:
+                    continue
                 new_color = self._legend.get_color(max_area)
                 self._image.putpixel(xy=coordinates, value=new_color)
